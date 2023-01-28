@@ -1,11 +1,20 @@
 package com.example.helloboot
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import com.example.helloboot.controller.HelloController
+import com.example.helloboot.servlet.FrontControllerServlet
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory
 
-@SpringBootApplication
+
 class HellobootApplication
 
 fun main(args: Array<String>) {
-    runApplication<HellobootApplication>(*args)
+    val serverFactory = TomcatServletWebServerFactory()
+    val webServer = serverFactory.getWebServer({
+        val helloController = HelloController()
+        it.addServlet("frontcontroller", FrontControllerServlet(helloController = helloController)).addMapping("/*")
+    })
+
+    webServer.start()
 }
+
+
