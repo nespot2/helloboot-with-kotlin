@@ -8,17 +8,17 @@ import org.springframework.web.servlet.DispatcherServlet
 class HellobootApplication
 
 fun main(args: Array<String>) {
-    val applicationContext = AnnotationConfigWebApplicationContext().apply {
+    AnnotationConfigWebApplicationContext().apply {
         register(HellobootConfig::class.java)
         refresh()
+        val serverFactory = TomcatServletWebServerFactory()
+        val webServer = serverFactory.getWebServer({
+            it.addServlet("dispatcherServlet", DispatcherServlet(this))
+                .addMapping("/*")
+        })
+        webServer.start()
     }
-    val serverFactory = TomcatServletWebServerFactory()
-    val webServer = serverFactory.getWebServer({
-        it.addServlet("dispatcherServlet", DispatcherServlet(applicationContext))
-            .addMapping("/*")
-    })
 
-    webServer.start()
 
 }
 
