@@ -11,18 +11,22 @@ import org.springframework.web.servlet.DispatcherServlet
 class HellobootApplication
 
 fun main(args: Array<String>) {
-
-    val applicationContext = GenericWebApplicationContext()
+    val applicationContext = object : GenericWebApplicationContext() {
+        override fun onRefresh() {
+            super.onRefresh()
+            val serverFactory = TomcatServletWebServerFactory()
+            val webServer = serverFactory.getWebServer({
+                it.addServlet("dispatcherServlet", DispatcherServlet(this))
+                    .addMapping("/*")
+            })
+            webServer.start()
+        }
+    }
     applicationContext.registerBean<HelloController>()
     applicationContext.registerBean<SimpleHelloService>()
     applicationContext.refresh()
-    val serverFactory = TomcatServletWebServerFactory()
-    val webServer = serverFactory.getWebServer({
-        it.addServlet("dispatcherServlet", DispatcherServlet(applicationContext))
-            .addMapping("/*")
-    })
 
-    webServer.start()
+
 }
 
 
