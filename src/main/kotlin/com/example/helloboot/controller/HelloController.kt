@@ -16,6 +16,10 @@ class HelloController(
 ) {
     @GetMapping
     fun hello(name: String): String {
-        return helloService.sayHello(Objects.requireNonNull(name))
+        if (name.isBlank()) {
+            throw IllegalArgumentException()
+        }
+
+        return helloService.sayHello(name)
     }
 }

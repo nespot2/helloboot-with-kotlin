@@ -13,7 +13,7 @@ import org.springframework.http.MediaType
  **/
 class HelloApiTest {
     @Test
-    fun `hello api`() {
+    fun `test success api`() {
         val name = "world!"
         val restTemplate = TestRestTemplate()
         val responseEntity =
@@ -28,5 +28,15 @@ class HelloApiTest {
 
         //body Hello world!
         assertEquals("Hello world!", responseEntity.body)
+    }
+
+    @Test
+    fun `test fail api`() {
+        val restTemplate = TestRestTemplate()
+        val responseEntity =
+            restTemplate.getForEntity("http://localhost:8080/myapp?name=", String::class.java)
+
+        //status code 200
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.statusCode)
     }
 }
