@@ -27,7 +27,7 @@ class HelloApiTest {
             .startsWith(MediaType.TEXT_PLAIN_VALUE)
 
         //body Hello world!
-        assertEquals("Hello world!", responseEntity.body)
+        assertEquals("*Hello world!*", responseEntity.body)
     }
 
     @Test
