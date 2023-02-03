@@ -1,9 +1,9 @@
 package com.example.helloboot
 
-import com.example.helloboot.annotation.MySpringBootAnnotation
+import com.example.config.MySpringBootApplication
 import com.example.helloboot.extentions.runApplication
 
-@MySpringBootAnnotation
+@MySpringBootApplication
 class HellobootApplication
 
 fun main(args: Array<String>) {
