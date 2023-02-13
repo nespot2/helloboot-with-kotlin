@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test
 /**
  * @author nespot2
  **/
-class HelloServiceTest {
+internal class HelloServiceTest {
     @Test
     fun `test simple hello service`() {
         val helloService = SimpleHelloService()

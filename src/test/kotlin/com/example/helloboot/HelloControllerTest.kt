@@ -9,7 +9,7 @@ import org.junit.jupiter.api.assertThrows
 /**
  * @author nespot2
  **/
-class HelloControllerTest {
+internal class HelloControllerTest {
 
     @Test
     fun `test hello controller`() {

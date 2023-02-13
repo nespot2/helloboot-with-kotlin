@@ -9,7 +9,7 @@ import org.springframework.core.type.AnnotatedTypeMetadata
 /**
  * @author nespot2
  **/
-class ConditionalTest {
+internal class ConditionalTest {
     @Test
     fun `conditional annotation test`() {
         ApplicationContextRunner()

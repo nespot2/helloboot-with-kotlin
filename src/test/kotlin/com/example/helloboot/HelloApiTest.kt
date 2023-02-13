@@ -11,7 +11,7 @@ import org.springframework.http.MediaType
 /**
  * @author nespot2
  **/
-class HelloApiTest {
+internal class HelloApiTest {
     @Test
     fun `test success api`() {
         val name = "world!"
