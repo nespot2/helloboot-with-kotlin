@@ -1,7 +1,7 @@
 package com.example.helloboot
 
 import com.example.config.MySpringBootApplication
-import com.example.helloboot.extentions.runApplication
+import org.springframework.boot.runApplication
 
 @MySpringBootApplication
 class HellobootApplication
