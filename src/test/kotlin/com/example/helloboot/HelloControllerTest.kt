@@ -18,6 +18,10 @@ internal class HelloControllerTest {
             override fun sayHello(name: String): String {
                 return "kiki $name"
             }
+
+            override fun countOf(name: String): Int {
+                return 0
+            }
         })
 
         val result1 = helloController.hello(name = "bye")

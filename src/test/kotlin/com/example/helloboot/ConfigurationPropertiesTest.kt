@@ -27,8 +27,8 @@ class ConfigurationPropertiesTest @Autowired constructor(
     }
 }
 
-@Component
 @ConfigurationProperties(prefix = "server")
+@Component
 data class ServerProperties(
     var contextPath: String,
     var port: Int,

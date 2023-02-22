@@ -27,7 +27,23 @@ internal class HelloApiTest {
             .startsWith(MediaType.TEXT_PLAIN_VALUE)
 
         //body Hello world!
-        assertEquals("*Hello world!*", responseEntity.body)
+        assertEquals("Hello world!", responseEntity.body)
+    }
+
+    @Test
+    fun `test count api`() {
+        val name = "toby"
+        val restTemplate = TestRestTemplate()
+        val responseEntity =
+            restTemplate.getForEntity("http://localhost:8080/myapp/count?name={name}", String::class.java, name)
+        //status code 200
+        assertEquals(HttpStatus.OK, responseEntity.statusCode)
+
+        //content-type text/plain
+        assertThat(responseEntity.headers.getFirst(HttpHeaders.CONTENT_TYPE))
+            .startsWith(MediaType.TEXT_PLAIN_VALUE)
+
+        assertEquals("0", responseEntity.body)
     }
 
     @Test
