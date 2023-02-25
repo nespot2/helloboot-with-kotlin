@@ -1,12 +1,12 @@
 package com.example.helloboot
 
-import com.example.config.MySpringBootApplication
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.jdbc.core.JdbcTemplate
 import javax.annotation.PostConstruct
 
-@MySpringBootApplication
+@SpringBootApplication
 class HellobootApplication @Autowired constructor(
     private val jdbcTemplate: JdbcTemplate
 ) {

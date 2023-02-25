@@ -18,7 +18,6 @@ internal class HelloServiceTest {
         val helloService = SimpleHelloService(helloRepository = helloRepository)
         val result = helloService.sayHello(name = name)
         then(helloRepository).should(times(1)).increaseCount(name = name)
-
         assertEquals("Hello world", result)
     }
 

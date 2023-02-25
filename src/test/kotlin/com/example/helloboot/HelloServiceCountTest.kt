@@ -5,12 +5,15 @@ import com.example.helloboot.service.HelloService
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * @author nespot2
  **/
 
-@HellobootTest
+@SpringBootTest
+@Transactional
 internal class HelloServiceCountTest @Autowired constructor(
     private val helloService: HelloService,
     private val helloRepository: HelloRepository

@@ -3,12 +3,15 @@ package com.example.helloboot
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.transaction.annotation.Transactional
 
 /**
  * @author nespot2
  **/
-@HellobootTest
+@SpringBootTest
+@Transactional
 class JdbcTemplateTest @Autowired constructor(
     private val jdbcTemplate: JdbcTemplate
 ) {
